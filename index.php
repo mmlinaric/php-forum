@@ -1,8 +1,9 @@
-<?php require_once("config/db.php"); include("tpl/header.php"); ?>
-
 <?php
 
-$stmt = $pdo->prepare('SELECT * FROM categories');
+require_once("config/db.php");
+include("tpl/header.php");
+
+$stmt = $pdo->prepare('SELECT id, name FROM categories');
 $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -10,8 +11,8 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <ul>
     <?php foreach($categories as $category) { ?>
-        <li><?php echo $category["name"]; ?></li>
+        <li><a href="category.php?id=<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></a></li>
     <?php } ?>
-<ul>
+</ul>
 
 <?php include("tpl/footer.php"); ?>
