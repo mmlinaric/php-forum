@@ -23,7 +23,7 @@ if (isset($_POST["login"]))
             ':username' => $username_email,
         ));
     } catch (PDOException $e) {
-        $_SESSION["error"] = "An error occurred while trying to login".$e->getMessage() .".";
+        $_SESSION["error"] = "An error occurred while trying to login.";
         header("Location: login.php");
         die();
     }
