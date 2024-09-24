@@ -1,6 +1,6 @@
 <?php
 
-require_once("config/db.php");
+require_once("config/init.php");
 include("tpl/header.php");
 
 if (!isset($_GET['id']) || empty($_GET['id']))

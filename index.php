@@ -1,6 +1,6 @@
 <?php
 
-require_once("config/db.php");
+require_once("config/init.php");
 include("tpl/header.php");
 
 $stmt = $pdo->prepare('SELECT id, name FROM categories');
