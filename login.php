@@ -28,7 +28,7 @@ if (isset($_POST["login"]))
         die();
     }
 
-    if ($stmt->rowCount() < 1)
+    if ($stmt->rowCount() == 0)
     {
         $_SESSION["error"] = "Invalid username or email.";
         header("Location: login.php");
