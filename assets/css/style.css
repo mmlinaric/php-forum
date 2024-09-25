@@ -4,6 +4,12 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+body {
+    background-color: #e6e7e8;
+}
+
+/* Messages and message colors */
+
 .message {
     padding: 5px 0;
     font-size: 20px;
@@ -18,4 +24,61 @@
 
 .info {
     background-color: #149fc9;
+}
+
+/* Container */
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 10px;
+}
+
+/* Navigation */
+
+ul.nav {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    list-style-type: none;
+    background-color: #777;
+    text-align: right;
+    padding: 10px;
+}
+
+ul.nav li {
+    display: inline;
+}
+
+ul.nav li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 2px;
+}
+
+ul.nav li.left {
+    float: left;
+}
+
+/* Categories */
+
+table.link-table {
+    margin-top: 5px;
+}
+
+table.link-table, table.link-table th, table.link-table td {
+    border: 1px solid black;
+    width: 100%;
+}
+
+table.link-table a {
+    text-decoration: none;
+}
+
+/* Forms */
+input {
+    width: 100%;
+    padding: 5px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }

@@ -1,6 +1,6 @@
 <?php
 
-// Stop user session and delete user data
+// Stop user session and delete session data
 // From PHP docs:
 // https://www.php.net/session_destroy
 

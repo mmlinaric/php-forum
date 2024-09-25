@@ -3,7 +3,7 @@
 require_once("config/init.php");
 include("tpl/header.php");
 
-if (!isset($_GET['id']) || empty($_GET['id']))
+if (empty($_GET['id']))
 {
     header("Location: index.php");
     die();
@@ -11,13 +11,14 @@ if (!isset($_GET['id']) || empty($_GET['id']))
 
 $stmt = $pdo->prepare("SELECT id, title, text FROM posts WHERE id = :id");
 $stmt->execute(array(':id' => $_GET['id']));
-$post = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (empty($post))
+if ($stmt->rowCount() == 0)
 {
     header("Location: index.php");
     die();
 }
+
+$post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
