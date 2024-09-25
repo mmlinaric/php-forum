@@ -20,9 +20,10 @@
         <li class="left"><a href="index.php">PHP Forum</a></li>
         <?php if (isset($_USER)) { ?>
             <li><a href="#"><?php echo $_USER["username"]; ?></a></li>
+            <li><a href="add-post.php">New post</a></li>
             <li><a href="logout.php">Log out</a></li>
         <?php } else { ?>
-            <li><a class="right" href="login.php">Log in</a></li>
+            <li><a href="login.php">Log in</a></li>
             <li><a href="register.php">Register</a></li>
         <?php } ?>
     </ul>

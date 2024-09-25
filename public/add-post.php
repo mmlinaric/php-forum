@@ -101,6 +101,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <label for="category">Category:</label>
         <select id="category" name="category" required>
+            <option selected disabled>Choose</option>
             <?php foreach($categories as $category) { ?>
                 <option value="<?php echo $category["id"]; ?>"><?php echo $category["name"]; ?></option>
             <?php } ?>
