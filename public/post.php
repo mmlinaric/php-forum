@@ -1,7 +1,7 @@
 <?php
 
-require_once("config/init.php");
-include("tpl/header.php");
+require_once("../config/init.php");
+include("../tpl/header.php");
 
 if (empty($_GET['id']))
 {
@@ -27,4 +27,4 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
     <p><?php echo $post["text"]; ?></p>
 </ul>
 
-<?php include("tpl/footer.php"); ?>
+<?php include("../tpl/footer.php"); ?>

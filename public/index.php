@@ -1,7 +1,7 @@
 <?php
 
-require_once("config/init.php");
-include("tpl/header.php");
+require_once("../config/init.php");
+include("../tpl/header.php");
 
 $stmt = $pdo->prepare('SELECT id, name FROM categories');
 $stmt->execute();
@@ -27,4 +27,4 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <p>There are no posts categories in this forum.</p>
 <?php } ?>
 
-<?php include("tpl/footer.php"); ?>
+<?php include("../tpl/footer.php"); ?>

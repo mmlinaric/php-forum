@@ -1,7 +1,7 @@
 <?php
 
-require_once("config/init.php");
-include("tpl/header.php");
+require_once("../config/init.php");
+include("../tpl/header.php");
 
 if (empty($_GET['id']))
 {
@@ -48,4 +48,4 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <p>There are no posts found in this category.</p>
 <?php } ?>
 
-<?php include("tpl/footer.php"); ?>
+<?php include("../tpl/footer.php"); ?>

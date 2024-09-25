@@ -1,7 +1,7 @@
 <?php
 
-require_once("config/init.php");
-include("tpl/header.php");
+require_once("../config/init.php");
+include("../tpl/header.php");
 
 if (isset($_POST["login"]))
 {
@@ -62,4 +62,4 @@ if (isset($_POST["login"]))
     <input type="submit" name="login" value="Login">
 </form>
 
-<?php include("tpl/footer.php"); ?>
+<?php include("../tpl/footer.php"); ?>
