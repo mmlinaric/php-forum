@@ -31,7 +31,7 @@ if (isset($_POST["add-post"]))
         die();
     }
 
-    if (strlen($title) > 100)
+    if (strlen($title) > 70)
     {
         $_SESSION["error"] = "Title is too long.";
         header("Location: add-post.php");
@@ -97,7 +97,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php if ($stmt->rowCount() > 0) { // If no categories are found, don't allow posting ?>
     <form method="POST">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" placeholder="Title" minlength="10" maxlength="100" required autofocus>
+        <input type="text" id="title" name="title" placeholder="Title" minlength="10" maxlength="70" required autofocus>
 
         <label for="category">Category:</label>
         <select id="category" name="category" required>

@@ -22,7 +22,19 @@ if ($stmt->rowCount() == 0)
 $category = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Find all posts in the specified category
-$stmt = $pdo->prepare('SELECT id, title FROM posts WHERE category_id = :id');
+$stmt = $pdo->prepare('
+SELECT
+    p.id,
+    p.title,
+    p.created_at,
+    u.username
+FROM
+    posts p
+LEFT JOIN
+    users u ON u.id = p.user_id
+WHERE
+    category_id = :id
+');
 $stmt->execute(array(
     ':id' => $_GET['id']
 ));
@@ -33,17 +45,22 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <h2><?php echo $category["name"]; ?></h2>
 
 <?php if ($stmt->rowCount() > 0) { ?>
-    <table class="link-table">
+
+    <div style="overflow-x: auto;"><table class="link-table">
         <tr>
             <th>Name</th>
+            <th>Author</th>
+            <th>Date posted</th>
         </tr>
 
         <?php foreach($posts as $post) { ?>
             <tr>
                 <td><a href="post.php?id=<?php echo $post["id"]; ?>"><?php echo $post["title"]; ?></a></td>
+                <td><?php echo $post["username"]; ?></td>
+                <td><?php echo $post["created_at"]; ?></td>
             </tr>
         <?php } ?>
-    </table>
+    </table></div>
 <?php } else { ?>
     <p>There are no posts found in this category.</p>
 <?php } ?>

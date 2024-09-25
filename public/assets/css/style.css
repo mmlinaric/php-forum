@@ -60,15 +60,16 @@ ul.nav li.left {
     float: left;
 }
 
-/* Categories */
+/* Tables */
 
 table.link-table {
     margin-top: 5px;
+    table-layout: fixed;
+    width: 100%;
 }
 
 table.link-table, table.link-table th, table.link-table td {
     border: 1px solid black;
-    width: 100%;
 }
 
 table.link-table a {
