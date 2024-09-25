@@ -15,6 +15,7 @@ $stmt->execute(array(':id' => $_GET['id']));
 
 if ($stmt->rowCount() == 0)
 {
+    $_SESSION["error"] = "Category not found.";
     header("Location: index.php");
     die();
 }

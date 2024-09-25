@@ -8,6 +8,10 @@ body {
     background-color: #e6e7e8;
 }
 
+h2 {
+    margin: 5px 0;
+}
+
 /* Messages and message colors */
 
 .message {
@@ -30,7 +34,7 @@ body {
 
 .container {
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     background-color: white;
     padding: 10px;
 }
@@ -78,6 +82,7 @@ table.link-table a {
 }
 
 /* Forms */
+
 input, select {
     width: 100%;
     padding: 5px 15px;
@@ -89,4 +94,17 @@ textarea {
     width: 100%;
     margin: 8px 0;
     box-sizing: border-box;
+}
+
+/* Post text */
+
+fieldset {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+/* Textareas */
+
+.no-resize {
+    resize: none;
 }
