@@ -9,7 +9,20 @@ if (empty($_GET['id']))
     die();
 }
 
-$stmt = $pdo->prepare("SELECT id, title, text FROM posts WHERE id = :id");
+$stmt = $pdo->prepare('
+SELECT
+    p.id,
+    p.title,
+    p.text,
+    p.created_at,
+    u.username
+FROM
+    posts p
+LEFT JOIN
+    users u ON u.id = p.user_id
+WHERE
+    p.id = :id
+');
 $stmt->execute(array(':id' => $_GET['id']));
 
 if ($stmt->rowCount() == 0)
@@ -22,9 +35,11 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
-<ul>
-    <h2><?php echo htmlspecialchars($post["title"]); ?></h2>
-    <p><?php echo htmlspecialchars($post["text"]); ?></p>
-</ul>
+<h2><?php echo htmlspecialchars($post["title"]); ?></h2>
+<p>Author: <b><?php echo $post["username"]; ?></b></p>
+<fieldset>
+    <legend>Text:</legend>
+    <?php echo htmlspecialchars($post["text"]); ?>
+</fieldset>
 
 <?php include("../tpl/footer.php"); ?>

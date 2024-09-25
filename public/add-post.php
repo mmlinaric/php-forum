@@ -82,7 +82,7 @@ if (isset($_POST["add-post"]))
     }
 
     $_SESSION["info"] = "Post added successfully.";
-    header("Location: posts.php?id=".$pdo->lastInsertId());
+    header("Location: post.php?id=".$pdo->lastInsertId());
     die();
 }
 
