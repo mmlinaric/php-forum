@@ -54,7 +54,7 @@ if (isset($_POST["login"]))
 
 <form method="POST">
     <label for="username_email">Username or email:</label>
-    <input type="text" id="username_email" name="username_email" placeholder="Username or email" required>
+    <input type="text" id="username_email" name="username_email" placeholder="Username or email" required autofocus>
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" placeholder="Password" required>

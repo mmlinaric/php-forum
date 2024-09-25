@@ -102,7 +102,7 @@ if (isset($_POST["registration"]))
 
 <form method="POST">
     <label for="username">Username (* length 5-20 characters, lowercase letters and numbers only):</label>
-    <input type="text" id="username" name="username" placeholder="Username" minlength="5" maxlength="20" required>
+    <input type="text" id="username" name="username" placeholder="Username" minlength="5" maxlength="20" required autofocus>
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" placeholder="Email" required>

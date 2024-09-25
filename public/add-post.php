@@ -97,7 +97,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php if ($stmt->rowCount() > 0) { // If no categories are found, don't allow posting ?>
     <form method="POST">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" placeholder="Title" minlength="10" maxlength="100" required>
+        <input type="text" id="title" name="title" placeholder="Title" minlength="10" maxlength="100" required autofocus>
 
         <label for="category">Category:</label>
         <select id="category" name="category" required>
