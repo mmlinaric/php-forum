@@ -3,7 +3,7 @@
 require_once("../config/init.php");
 include("../tpl/header.php");
 
-if (empty($_GET['id']))
+if (empty($_GET['id']) || !is_int($_GET['id']))
 {
     header("Location: index.php");
     die();
@@ -23,8 +23,8 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <ul>
-    <h2><?php echo $post["title"]; ?></h2>
-    <p><?php echo $post["text"]; ?></p>
+    <h2><?php echo htmlspecialchars($post["title"]); ?></h2>
+    <p><?php echo htmlspecialchars($post["text"]); ?></p>
 </ul>
 
 <?php include("../tpl/footer.php"); ?>

@@ -3,7 +3,7 @@
 require_once("../config/init.php");
 include("../tpl/header.php");
 
-if (empty($_GET['id']))
+if (empty($_GET['id']) || !is_int($_GET['id']))
 {
     header("Location: index.php");
     die();

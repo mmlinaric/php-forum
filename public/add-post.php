@@ -12,11 +12,11 @@ if (!isset($_SESSION["user_id"]))
 
 if (isset($_POST["add-post"]))
 {
-    $title = $_POST["title"];
+    $title = htmlspecialchars($_POST["title"]);
     $category = $_POST["category"];
-    $text = $_POST["text"];
+    $text = htmlspecialchars($_POST["text"]);
 
-    if(empty($title) || empty($category) || empty($text))
+    if(empty($title) || empty($category) || empty($text) || !is_int($category))
     {
         $_SESSION["error"] = "You have to enter all inputs.";
         header("Location: add-post.php");
