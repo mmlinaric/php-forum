@@ -16,7 +16,7 @@ if (isset($_POST["add-post"]))
     $category = $_POST["category"];
     $text = htmlspecialchars($_POST["text"]);
 
-    if(empty($title) || empty($category) || empty($text) || !is_int($category))
+    if(empty($title) || empty($category) || empty($text))
     {
         $_SESSION["error"] = "You have to enter all inputs.";
         header("Location: add-post.php");

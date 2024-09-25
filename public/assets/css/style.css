@@ -73,6 +73,7 @@ table.link-table, table.link-table th, table.link-table td {
 
 table.link-table a {
     text-decoration: none;
+    color: blue;
 }
 
 /* Forms */
