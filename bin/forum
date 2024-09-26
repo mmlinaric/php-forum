@@ -1,0 +1,89 @@
+#!/usr/bin/env php
+<?php
+
+if (php_sapi_name() !== 'cli') {
+    exit("This script must be run from the command line.\n");
+}
+
+require __DIR__."/../config/db.php";
+
+$command = $argv[0];
+
+// Get specified option or return help
+if (!isset($argv[1]))
+{
+    echo "PHP Forum command-line usage\n";
+    echo "Usage: php ".$command." [option] [action] [identifier]\n\n";
+    echo "Use \"php ".$command." help\" if you don't know where to start\n";
+    die();
+}
+
+$option_list = ['user', 'post', 'comment', 'category']; // Array of all possible options
+
+if (in_array($argv[1], $option_list)) { // Show "help" for the specific option if option is not specified or doesn't exist
+    $option = $argv[1];
+} else {
+    $option = "help";
+}
+
+// Get specified action or return option's help
+if (isset($argv[2])) {
+    $action = $argv[2];
+} else {
+    $action = "help";
+}
+
+if (isset($argv[3])) $identifier = $argv[3];
+
+switch ($option) {
+    case "category": {
+        switch($action) {
+            case "create":
+                if (!isset($identifier)) die("You are missing category name. Use \"php ".$command." category create [name]\"\n");
+                $stmt = $pdo->prepare("INSERT INTO categories (name) VALUES (:name)");
+
+                try {
+                    $stmt->execute(
+                        array(":name" => $identifier)
+                    );
+
+                    echo "Category " . $identifier . " successfully created with id " . $pdo->lastInsertId() . "\n";
+                } catch (PDOException $e) {
+                    echo "An error occurred while trying to create category.\n";
+                }
+
+                break;
+            case "delete":
+                if (!isset($identifier)) die("You are missing category ID. Use \"php ".$command." category delete [id]\"\n");
+
+                // Check if category id exists
+                $stmt = $pdo->prepare("DELETTE FROM categories WHERE id = :id");
+
+                try {
+                    $stmt->execute(array(":id" => $identifier));
+                    echo "Category ".$identifier." successfully deleted.\n";
+                } catch (PDOException $e) {
+                    echo "An error occurred while trying to delete category.\n";
+                }
+
+                break;
+            default:
+                echo "Use php ".$command." category [action] [identifier]\n\n";
+                echo "Possible actions:\n";
+                echo "create, delete\n";
+                break;
+        }
+        break;
+    }
+
+    // This is used if $option is not specified
+    case "help": {
+        echo "PHP Forum command-line usage\n";
+        echo "Usage: php ".$command." [option] [action] [identifier]\n\n";
+        echo "Options:\n";
+        echo "user, post, comment, category\n\n";
+        echo "To find supported actions, type:\n";
+        echo "php ".$command." [option]\n";
+        break;
+    }
+}
