@@ -112,6 +112,7 @@ $replies = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <p><?php echo nl2br(htmlspecialchars($post["text"])); ?></p>
 </fieldset>
 
+<?php if (isset($_SESSION["user_id"])) { ?>
 <h3>Add a reply</h3>
 <form method="POST">
     <label for="text">
@@ -119,6 +120,7 @@ $replies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <input type="submit" name="add-reply" value="Reply">
 </form>
+<?php } ?>
 
 <h2>Replies:</h2>
 <?php if ($stmt->rowCount() > 0) { ?>
